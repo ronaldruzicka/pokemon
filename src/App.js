@@ -78,7 +78,7 @@ class App extends Component {
     const { isFetching, pokemonList, selectedPokemon } = this.state;
 
     return (
-      <div className="app">
+      <React.Fragment>
         <header className="app-header">
           <Logo />
           <h1 className="app-title">Pick your pokémon!</h1>
@@ -93,7 +93,7 @@ class App extends Component {
         {selectedPokemon ? (
           <PokemonDetail pokemonData={selectedPokemon} />
         ) : null}
-      </div>
+      </React.Fragment>
     );
   }
 }
