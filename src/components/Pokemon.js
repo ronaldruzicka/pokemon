@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Pokeball from '../assets/Pokeball'
+import Pokeball from '../assets/pokeball.svg'
 
 const Pokemon = ({ name, showDetail, url }) => {
   const showPokemonDetail = () => {

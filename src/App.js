@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Logo from "./assets/Logo";
+import Logo from "./assets/logo.svg";
 import Pokemon from "./components/Pokemon";
 import PokemonDetail from "./components/PokemonDetail";
 
