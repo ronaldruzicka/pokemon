@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-import "./App.css";
-
 import Logo from "./assets/Logo";
 import Pokemon from "./components/Pokemon";
 import PokemonDetail from "./components/PokemonDetail";

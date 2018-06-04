@@ -1,0 +1,38 @@
+@import './reboot';
+
+:root {
+  --header-gutter: 1rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+.app {
+  display: grid;
+  height: 100%;
+  color: var(--text-color);
+  grid-template-areas: 'header' 'navigation' 'detail';
+}
+
+.app-header {
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  padding-top: var(--header-gutter);
+  padding-bottom: var(--header-gutter);
+  color: #fff;
+  background-color: #222;
+  grid-area: header;
+}
+
+.app-logo {
+  margin-bottom: 2rem;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 1.5em;
+  text-align: center;
+}
