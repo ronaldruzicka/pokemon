@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import Pokeball from '../assets/pokeball.svg'
+import Pokeball from "../assets/pokeball.svg";
 
 const Pokemon = ({ name, showDetail, url }) => {
   const showPokemonDetail = () => {
@@ -13,7 +13,10 @@ const Pokemon = ({ name, showDetail, url }) => {
       className="button button--link app-button"
       onClick={showPokemonDetail}
     >
-      <Pokeball />
+      <span className="icon icon--left">
+        <Pokeball />
+      </span>
+
       {name}
     </button>
   );

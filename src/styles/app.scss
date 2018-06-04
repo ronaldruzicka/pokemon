@@ -2,12 +2,15 @@
 @import './reboot';
 @import './components/button';
 @import './components/icon';
+@import './components/loader';
 
 :root {
   --header-gutter: 1rem;
   --transparent: rgba(255, 255, 255, 0);
-  --link-color: #3669ae;
-  --link-color-hover: #e1371f;
+  --color-blue: #3669ae;
+  --color-blue-alpha: rgb(54, 105, 174, .4);
+  --color-red: #e1371f;
+  --color-yellow: #feca30;
 }
 
 html,

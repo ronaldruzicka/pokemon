@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 
+import Loader from "./components/Loader";
 import Logo from "./assets/logo.svg";
 import Pokemon from "./components/Pokemon";
 import PokemonDetail from "./components/PokemonDetail";
@@ -89,7 +90,7 @@ class App extends Component {
           <h1 className="app-title">Pick your pokémon!</h1>
         </header>
 
-        {isFetching && "Fetching data"}
+        {isFetching && <Loader />}
 
         {pokemonList ? this.showPokemonList(pokemonList) : null}
 

@@ -1,0 +1,36 @@
+.loader {
+  $loader-size: 4rem;
+  $loader-overlay-size: 100%;
+  $loader-color-start: var(--color-yellow);
+  $loader-color-end: var(--color-red);
+  $loader-color-overlay: var(--color-blue-alpha);
+
+  position: fixed;
+  z-index: 1;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  width: $loader-overlay-size;
+  height: $loader-overlay-size;
+  background-color: $loader-color-overlay;
+
+  .icon-pokeball {
+    width: $loader-size;
+    height: $loader-size;
+    animation: loader infinite 3s linear;
+  }
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+      fill: $loader-color-start;
+    }
+    50% {
+      fill: #000;
+    }
+    100% {
+      transform: rotate(360deg);
+      fill: $loader-color-end;
+    }
+  }
+}
