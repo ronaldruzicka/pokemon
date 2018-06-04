@@ -4,6 +4,7 @@ import "./App.css";
 
 import Logo from "./assets/Logo";
 import Pokemon from "./components/Pokemon";
+import PokemonDetail from "./components/PokemonDetail";
 
 class App extends Component {
   state = {
@@ -45,7 +46,7 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        const { base_experience: baseExperience, name, sprites } = data;
+        const { base_experience: baseExperience, name, sprites, weight } = data;
 
         this.setState({
           isFetching: false,
@@ -55,7 +56,8 @@ class App extends Component {
               male: sprites.front_default,
               female: sprites.front_female
             },
-            name
+            name,
+            weight
           }
         });
       });
@@ -73,6 +75,8 @@ class App extends Component {
   };
 
   render() {
+    const { isFetching, pokemonList, selectedPokemon } = this.state;
+
     return (
       <div className="app">
         <header className="app-header">
@@ -80,14 +84,14 @@ class App extends Component {
           <h1 className="app-title">Pick your pokémon!</h1>
         </header>
 
-        {this.state.isFetching && "Fetching data"}
+        {isFetching && "Fetching data"}
 
-        {this.state.pokemonList
-          ? this.showPokemonList(this.state.pokemonList)
+        {pokemonList
+          ? this.showPokemonList(pokemonList)
           : null}
 
-        {this.state.selectedPokemon ? (
-          <div>{this.state.selectedPokemon.name}</div>
+        {selectedPokemon ? (
+          <PokemonDetail pokemonData={selectedPokemon} />
         ) : null}
       </div>
     );

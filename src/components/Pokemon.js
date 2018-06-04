@@ -10,7 +10,9 @@ const Pokemon = ({ name, showDetail, url }) => {
 };
 
 Pokemon.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  showDetail: PropTypes.func.isRequired,
+  url: PropTypes.string.isRequired
 };
 
 export default Pokemon;
