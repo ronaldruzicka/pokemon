@@ -12,10 +12,10 @@ class App extends Component {
   };
 
   componentDidMount = () => {
-    this.fetchPokemons("https://pokeapi.co/api/v2/pokemon/?limit=9")
-  }
+    this.fetchPokemons("https://pokeapi.co/api/v2/pokemon/?limit=9");
+  };
 
-  fetchPokemons = (url) => {
+  fetchPokemons = url => {
     this.setState({
       isFetching: true
     });
@@ -62,14 +62,21 @@ class App extends Component {
   };
 
   showPokemonList = list => {
-    return list.map(item => (
-      <Pokemon
-        key={item.name}
-        name={item.name}
-        showDetail={this.fetchPokemonDetail}
-        url={item.url}
-      />
-    ));
+    return (
+      <nav className="app-nav">
+        <ul className="app-navList">
+          {list.map(item => (
+            <li key={item.name} className="app-navItem">
+              <Pokemon
+                name={item.name}
+                showDetail={this.fetchPokemonDetail}
+                url={item.url}
+              />
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
   };
 
   render() {
@@ -84,9 +91,7 @@ class App extends Component {
 
         {isFetching && "Fetching data"}
 
-        {pokemonList
-          ? this.showPokemonList(pokemonList)
-          : null}
+        {pokemonList ? this.showPokemonList(pokemonList) : null}
 
         {selectedPokemon ? (
           <PokemonDetail pokemonData={selectedPokemon} />

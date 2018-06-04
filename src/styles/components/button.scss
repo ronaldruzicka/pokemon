@@ -1,0 +1,58 @@
+.button {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 10px 40px;
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid var(--transparent);
+  border-radius: 4px;
+  transition-property: border-color, background-color;
+  transition-duration: .3s;
+  transition-timing-function: ease-in-out;
+  user-select: none;
+
+  @media screen and (min-width: $md) {
+    width: auto;
+  }
+
+  &:active {
+    box-shadow: none;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  &:focus:not(:disabled),
+  &:hover:not(:disabled) {
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+  }
+
+  &:active:not(:disabled) {
+    top: 1px;
+  }
+
+  &--link {
+    width: auto;
+    padding: 0;
+    color: var(--link-color);
+    text-decoration: none;
+    background: none;
+    border: none;
+
+    &:hover:not(:disabled),
+    &:focus:not(:disabled) {
+      color: var(--link-color-hover);
+      text-decoration: none;
+    }
+  }
+}

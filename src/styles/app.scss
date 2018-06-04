@@ -1,7 +1,13 @@
+@import './_variables';
 @import './reboot';
+@import './components/button';
+@import './components/icon';
 
 :root {
   --header-gutter: 1rem;
+  --transparent: rgba(255, 255, 255, 0);
+  --link-color: #3669ae;
+  --link-color-hover: #e1371f;
 }
 
 html,
@@ -14,25 +20,52 @@ body {
   height: 100%;
   color: var(--text-color);
   grid-template-areas: 'header' 'navigation' 'detail';
-}
 
-.app-header {
-  display: grid;
-  align-content: center;
-  justify-content: center;
-  padding-top: var(--header-gutter);
-  padding-bottom: var(--header-gutter);
-  color: #fff;
-  background-color: #222;
-  grid-area: header;
-}
+  &-header {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    padding-top: var(--header-gutter);
+    padding-bottom: var(--header-gutter);
+    color: #fff;
+    background-color: #222;
+    grid-area: header;
+  }
 
-.app-logo {
-  margin-bottom: 2rem;
-}
+  &-logo {
+    margin-bottom: 2rem;
+  }
 
-.app-title {
-  margin: 0;
-  font-size: 1.5em;
-  text-align: center;
+  &-title {
+    margin: 0;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  &-nav {
+    padding-top: 2rem;
+  }
+
+  &-navList {
+    padding-left: 1rem;
+    list-style: none;
+  }
+
+  &-navItem {
+    &:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &-button {
+    display: flex;
+    align-items: center;
+
+    &:hover,
+    &:focus {
+      .icon-pokeball {
+        fill: var(--link-color-hover);
+      }
+    }
+  }
 }
