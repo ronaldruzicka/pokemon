@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import IconMale from "../assets/mars.svg";
+import IconFemale from "../assets/venus.svg";
+
 import format from "../lib/format";
 
 const PokemonDetail = ({ pokemonData }) => {
@@ -12,14 +15,18 @@ const PokemonDetail = ({ pokemonData }) => {
         {images.male && (
           <div className="pokedex-image">
             <img src={images.male} alt={name} />
-            <div className="pokedex-gender">male</div>
+            <div className="pokedex-gender icon">
+              <IconMale />
+            </div>
           </div>
         )}
 
         {images.female && (
           <div className="pokedex-image">
             <img src={images.female} alt={name} />
-            <div className="pokedex-gender">female</div>
+            <div className="pokedex-gender icon">
+              <IconFemale />
+            </div>
           </div>
         )}
       </div>
