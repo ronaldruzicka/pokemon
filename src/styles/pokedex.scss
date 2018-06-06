@@ -10,7 +10,6 @@
   --color-blue: #3669ae;
   --color-blue-alpha: rgb(54, 105, 174, .4);
   --color-red: #e1371f;
-  --color-yellow: #feca30;
 }
 
 html,
@@ -26,10 +25,26 @@ body {
   padding: var(--gutter);
   color: var(--text-color);
 
+  @media screen and (min-width: $sm) {
+    display: grid;
+    max-width: calc(#{$sm} - (var(--gutter) * 2));
+    margin-right: auto;
+    margin-left: auto;
+    grid-template-areas:
+      'header header'
+      'navigation detail';
+    grid-template-rows: 110px auto;
+    grid-template-columns: 1fr 2fr;
+  }
+
   &-header {
     margin-bottom: var(--gutter);
     color: #fff;
     text-align: center;
+
+    @media screen and (min-width: $sm) {
+      grid-area: header;
+    }
   }
 
   &-title {
@@ -40,6 +55,10 @@ body {
 
   &-nav {
     padding-top: var(--header-gutter);
+
+    @media screen and (min-width: $sm) {
+      grid-area: navigation;
+    }
   }
 
   &-navList {
@@ -60,8 +79,16 @@ body {
     &:hover,
     &:focus {
       .icon-pokeball {
-        fill: var(--link-color-hover);
+        transform: rotate(180deg);
+        transition: transform .3s ease-in-out;
+        fill: var(--color-red);
       }
+    }
+  }
+
+  &-detail {
+    @media screen and (min-width: $sm) {
+      grid-area: detail;
     }
   }
 
@@ -77,6 +104,7 @@ body {
   }
 
   &-stats {
+    position: relative;
     padding: var(--gutter);
     font-size: .875rem;
     color: #fff;
@@ -92,5 +120,11 @@ body {
 
   &-label {
     font-weight: 300;
+  }
+
+  &-icon {
+    position: absolute;
+    top: var(--gutter);
+    right: var(--gutter);
   }
 }

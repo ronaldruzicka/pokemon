@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import IconMale from "../assets/mars.svg";
 import IconFemale from "../assets/venus.svg";
+import IconClipBoard from "../assets/clipboard-list.svg";
 
 import format from "../lib/format";
 
@@ -42,6 +43,9 @@ const PokemonDetail = ({ pokemonData }) => {
         <div className="pokedex-stat">
           <span className="pokedex-label">BaseExperience:</span>{" "}
           {baseExperience}
+        </div>
+        <div className="pokedex-icon icon">
+          <IconClipBoard />
         </div>
       </div>
     </div>
