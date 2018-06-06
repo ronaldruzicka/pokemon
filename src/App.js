@@ -9,7 +9,8 @@ class App extends Component {
   state = {
     isFetching: false,
     pokemonList: [],
-    selectedPokemon: null
+    selectedPokemon: null,
+    pokemonCache: []
   };
 
   componentDidMount = () => {
@@ -35,7 +36,19 @@ class App extends Component {
       });
   };
 
-  fetchPokemonDetail = url => {
+  fetchPokemonDetail = (name, url) => {
+    const { pokemonCache } = this.state;
+    const cachedPokemon = pokemonCache.find(item => item.name === name);
+
+    if (cachedPokemon) {
+      this.setState({
+        isFetching: false,
+        selectedPokemon: cachedPokemon,
+      });
+
+      return;
+    }
+
     this.setState({
       isFetching: true
     });
@@ -47,17 +60,20 @@ class App extends Component {
       .then(data => {
         const { base_experience: baseExperience, name, sprites, weight } = data;
 
+        const selectedPokemon = {
+          baseExperience,
+          images: {
+            male: sprites.front_default,
+            female: sprites.front_female
+          },
+          name,
+          weight
+        };
+
         this.setState({
           isFetching: false,
-          selectedPokemon: {
-            baseExperience,
-            images: {
-              male: sprites.front_default,
-              female: sprites.front_female
-            },
-            name,
-            weight
-          }
+          selectedPokemon,
+          pokemonCache: this.state.pokemonCache.concat(selectedPokemon)
         });
       });
   };
