@@ -10,7 +10,7 @@ const Pokemon = ({ name, showDetail, url }) => {
 
   return (
     <button
-      className="button button--link app-button"
+      className="button button--link pokedex-button"
       onClick={showPokemonDetail}
     >
       <span className="icon icon--left">

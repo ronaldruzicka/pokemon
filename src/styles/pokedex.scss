@@ -5,7 +5,7 @@
 @import './components/loader';
 
 :root {
-  --header-gutter: 1rem;
+  --gutter: 1rem;
   --transparent: rgba(255, 255, 255, 0);
   --color-blue: #3669ae;
   --color-blue-alpha: rgb(54, 105, 174, .4);
@@ -18,25 +18,18 @@ body {
   height: 100%;
 }
 
-.app {
-  display: grid;
-  height: 100%;
+body {
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+}
+
+.pokedex {
+  padding: var(--gutter);
   color: var(--text-color);
-  grid-template-areas: 'header' 'navigation' 'detail';
 
   &-header {
-    display: grid;
-    align-content: center;
-    justify-content: center;
-    padding-top: var(--header-gutter);
-    padding-bottom: var(--header-gutter);
+    margin-bottom: var(--gutter);
     color: #fff;
-    background-color: #222;
-    grid-area: header;
-  }
-
-  &-logo {
-    margin-bottom: 2rem;
+    text-align: center;
   }
 
   &-title {
@@ -46,11 +39,11 @@ body {
   }
 
   &-nav {
-    padding-top: 2rem;
+    padding-top: var(--header-gutter);
   }
 
   &-navList {
-    padding-left: 1rem;
+    padding-left: 0;
     list-style: none;
   }
 
@@ -70,5 +63,33 @@ body {
         fill: var(--link-color-hover);
       }
     }
+  }
+
+  &-detailHeader {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1.5rem;
+  }
+
+  &-gender {
+    text-align: center;
+  }
+
+  &-stats {
+    padding: var(--gutter);
+    font-size: .875rem;
+    color: #fff;
+    background-color: var(--color-blue);
+    border-radius: .5rem;
+  }
+
+  &-stat {
+    &:not(:last-child) {
+      margin-bottom: .5rem;
+    }
+  }
+
+  &-label {
+    font-weight: 300;
   }
 }

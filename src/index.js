@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import "./styles/app.scss";
+import "./styles/pokedex.scss";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

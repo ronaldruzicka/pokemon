@@ -64,10 +64,10 @@ class App extends Component {
 
   showPokemonList = list => {
     return (
-      <nav className="app-nav">
-        <ul className="app-navList">
+      <nav className="pokedex-nav">
+        <ul className="pokedex-navList">
           {list.map(item => (
-            <li key={item.name} className="app-navItem">
+            <li key={item.name} className="pokedex-navItem">
               <Pokemon
                 name={item.name}
                 showDetail={this.fetchPokemonDetail}
@@ -85,9 +85,8 @@ class App extends Component {
 
     return (
       <React.Fragment>
-        <header className="app-header">
+        <header className="pokedex-header">
           <Logo />
-          <h1 className="app-title">Pick your pokémon!</h1>
         </header>
 
         {isFetching && <Loader />}

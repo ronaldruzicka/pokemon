@@ -1,29 +1,42 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+import format from "../lib/format";
+
 const PokemonDetail = ({ pokemonData }) => {
-  console.log(pokemonData)
   const { baseExperience, images, name, weight } = pokemonData;
 
   return (
-    <div>
-      {images.male && (
-        <div>
-          male
-          <img src={images.male} alt={name} />
-        </div>
-      )}
+    <div className="pokedex-detail">
+      <div className="pokedex-detailHeader">
+        {images.male && (
+          <div className="pokedex-image">
+            <img src={images.male} alt={name} />
+            <div className="pokedex-gender">male</div>
+          </div>
+        )}
 
-      {images.female && (
-        <div>
-          female
-          <img src={images.female} alt={name} />
-        </div>
-      )}
+        {images.female && (
+          <div className="pokedex-image">
+            <img src={images.female} alt={name} />
+            <div className="pokedex-gender">female</div>
+          </div>
+        )}
+      </div>
 
-      <div className="">name: {name}</div>
-      <div className="">weight: {weight}kg</div>
-      <div className="">baseExperience: {baseExperience}</div>
+      <div className="pokedex-stats">
+        <div className="pokedex-stat">
+          <span className="pokedex-label">Name:</span>{" "}
+          {format.toSentenceCase(name)}
+        </div>
+        <div className="pokedex-stat">
+          <span className="pokedex-label">Weight:</span> {weight}kg
+        </div>
+        <div className="pokedex-stat">
+          <span className="pokedex-label">BaseExperience:</span>{" "}
+          {baseExperience}
+        </div>
+      </div>
     </div>
   );
 };
