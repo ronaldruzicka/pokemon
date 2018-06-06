@@ -6,6 +6,7 @@
 
 :root {
   --gutter: 1rem;
+  --gutter-big: 1.5rem;
   --transparent: rgba(255, 255, 255, 0);
   --color-blue: #3669ae;
   --color-blue-alpha: rgb(54, 105, 174, .4);
@@ -105,7 +106,7 @@ body {
 
   &-stats {
     position: relative;
-    padding: var(--gutter);
+    padding: var(--gutter-big);
     font-size: .875rem;
     color: #fff;
     background-color: var(--color-blue);
@@ -124,7 +125,7 @@ body {
 
   &-icon {
     position: absolute;
-    top: var(--gutter);
-    right: var(--gutter);
+    top: var(--gutter-big);
+    right: var(--gutter-big);
   }
 }

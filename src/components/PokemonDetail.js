@@ -33,6 +33,9 @@ const PokemonDetail = ({ pokemonData }) => {
       </div>
 
       <div className="pokedex-stats">
+        <div className="pokedex-icon icon">
+          <IconClipBoard />
+        </div>
         <div className="pokedex-stat">
           <span className="pokedex-label">Name:</span>{" "}
           {format.toSentenceCase(name)}
@@ -43,9 +46,6 @@ const PokemonDetail = ({ pokemonData }) => {
         <div className="pokedex-stat">
           <span className="pokedex-label">BaseExperience:</span>{" "}
           {baseExperience}
-        </div>
-        <div className="pokedex-icon icon">
-          <IconClipBoard />
         </div>
       </div>
     </div>
