@@ -17,17 +17,18 @@
   .icon-pokeball {
     width: $loader-size;
     height: $loader-size;
-    animation: loader infinite 3s linear;
-    color: #000;
+    animation: rotate infinite 2s linear;
+    color: var(--text-color);
   }
 
-  @keyframes loader {
-    0% {
-      transform: rotate(0deg);
-    }
+}
 
-    100% {
-      transform: rotate(360deg);
-    }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

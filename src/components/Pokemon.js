@@ -2,23 +2,30 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import Pokeball from "../assets/pokeball.svg";
+import PokemonDetail from "./PokemonDetail";
 
-const Pokemon = ({ name, showDetail, url }) => {
+const Pokemon = ({ name, selectedPokemon, showDetail, url }) => {
   const showPokemonDetail = () => {
     showDetail(name, url);
   };
 
   return (
-    <button
-      className="button button--link pokedex-button"
-      onClick={showPokemonDetail}
-    >
-      <span className="icon icon--left">
-        <Pokeball />
-      </span>
+    <React.Fragment>
+      <button
+        className="button button--link pokedex-button"
+        onClick={showPokemonDetail}
+      >
+        <span className="icon icon--left">
+          <Pokeball />
+        </span>
 
-      {name}
-    </button>
+        {name}
+      </button>
+
+      {selectedPokemon ? (
+          selectedPokemon.name === name && <PokemonDetail pokemonData={selectedPokemon} />
+        ) : null}
+    </React.Fragment>
   );
 };
 

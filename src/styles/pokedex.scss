@@ -6,11 +6,11 @@
 
 :root {
   --gutter: 1rem;
-  --gutter-big: 1.5rem;
   --transparent: rgba(255, 255, 255, 0);
   --color-blue: #3669ae;
   --color-blue-alpha: rgb(54, 105, 174, .4);
-  --color-red: #e1371f;
+  --color-red: #dd2d51;
+  --text-color: #222;
 }
 
 html,
@@ -19,7 +19,8 @@ body {
 }
 
 body {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: Exo, Helvetica, Arial, sans-serif;
+  font-weight: 300;
 }
 
 .pokedex {
@@ -27,25 +28,15 @@ body {
   color: var(--text-color);
 
   @media screen and (min-width: $sm) {
-    display: grid;
     max-width: calc(#{$sm} - (var(--gutter) * 2));
     margin-right: auto;
     margin-left: auto;
-    grid-template-areas:
-      'header header'
-      'navigation detail';
-    grid-template-rows: 110px auto;
-    grid-template-columns: 1fr 2fr;
   }
 
   &-header {
-    margin-bottom: var(--gutter);
+    margin-bottom: 2rem;
     color: #fff;
     text-align: center;
-
-    @media screen and (min-width: $sm) {
-      grid-area: header;
-    }
   }
 
   &-title {
@@ -55,11 +46,9 @@ body {
   }
 
   &-nav {
-    padding-top: var(--header-gutter);
-
-    @media screen and (min-width: $sm) {
-      grid-area: navigation;
-    }
+    padding: 1rem;
+    background: #f9f9f9;
+    border-radius: .5rem;
   }
 
   &-navList {
@@ -88,44 +77,57 @@ body {
   }
 
   &-detail {
+    margin-bottom: 2rem;
+
     @media screen and (min-width: $sm) {
-      grid-area: detail;
+      display: grid;
+      align-items: center;
+      grid-template-columns: 1fr 2fr;
+      grid-column-gap: 1rem;
     }
   }
 
   &-detailHeader {
-    display: flex;
-    justify-content: space-around;
-    margin-bottom: 1.5rem;
+    margin-bottom: var(--gutter);
+    text-align: center;
+  }
+
+  &-name {
+    font-size: 1.125rem;
+    font-weight: 500;
   }
 
   &-gender {
-    margin-right: auto;
-    margin-left: auto;
+    display: flex;
+  }
+
+  &-genderIcon + &-genderIcon {
+    margin-left: 1rem;
   }
 
   &-stats {
     position: relative;
-    padding: var(--gutter-big);
+    padding: var(--gutter);
     font-size: .875rem;
     color: #fff;
-    background-color: var(--color-blue);
+    background-color: var(--color-red);
     border-radius: .5rem;
   }
 
   &-stat {
     &:not(:last-child) {
-      margin-bottom: .5rem;
+      margin-bottom: 1rem;
     }
   }
 
   &-label {
-    font-weight: 300;
+    margin-bottom: .25rem;
+    font-weight: 500;
   }
 
   &-icon {
     position: absolute;
-    top: var(--gutter-big);
-    right: var(--gutter-big);
+    top: var(--gutter);
+    right: var(--gutter);
   }
 }

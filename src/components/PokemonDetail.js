@@ -1,14 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import IconMale from "../assets/mars.svg";
-import IconFemale from "../assets/venus.svg";
+import IconMale from "../assets/male.svg";
+import IconFemale from "../assets/female.svg";
 import IconClipBoard from "../assets/clipboard-list.svg";
 
 import format from "../lib/format";
 
+import PokemonStat from './PokemonStat'
+
 const PokemonDetail = ({ pokemonData }) => {
-  const { baseExperience, images, name, weight } = pokemonData;
+  const { height, id, images, name, stats, types, weight } = pokemonData;
+
+  console.log(stats)
+  console.log(types)
 
   return (
     <div className="pokedex-detail">
@@ -16,37 +21,44 @@ const PokemonDetail = ({ pokemonData }) => {
         {images.male && (
           <div className="pokedex-image">
             <img src={images.male} alt={name} />
-            <div className="pokedex-gender icon">
-              <IconMale />
-            </div>
           </div>
         )}
 
         {images.female && (
           <div className="pokedex-image">
             <img src={images.female} alt={name} />
-            <div className="pokedex-gender icon">
-              <IconFemale />
-            </div>
           </div>
         )}
+
+        <div className="pokedex-name">
+          {`${format.toSentenceCase(name)} #${id}`}
+        </div>
       </div>
 
       <div className="pokedex-stats">
         <div className="pokedex-icon icon">
           <IconClipBoard />
         </div>
-        <div className="pokedex-stat">
-          <span className="pokedex-label">Name:</span>{" "}
-          {format.toSentenceCase(name)}
-        </div>
-        <div className="pokedex-stat">
-          <span className="pokedex-label">Weight:</span> {weight}kg
-        </div>
-        <div className="pokedex-stat">
-          <span className="pokedex-label">BaseExperience:</span>{" "}
-          {baseExperience}
-        </div>
+
+        <PokemonStat text="Height">{height}m</PokemonStat>
+
+        <PokemonStat text="Weight">{weight / 10}kg</PokemonStat>
+
+        <PokemonStat text="Gender">
+          <div className="pokedex-gender">
+            {images.male && (
+              <div className="pokedex-genderIcon icon">
+                <IconMale />
+              </div>
+            )}
+
+            {images.female && (
+              <div className="pokedex-genderIcon icon">
+                <IconFemale />
+              </div>
+            )}
+          </div>
+        </PokemonStat>
       </div>
     </div>
   );
@@ -54,12 +66,20 @@ const PokemonDetail = ({ pokemonData }) => {
 
 PokemonDetail.propTypes = {
   pokemonData: PropTypes.shape({
-    baseExperience: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
     images: PropTypes.shape({
-      male: PropTypes.string.isRequired,
+      male: PropTypes.string,
       female: PropTypes.string
     }).isRequired,
     name: PropTypes.string.isRequired,
+    stats: PropTypes.arrayOf(
+      PropTypes.shape({
+        value: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    types: PropTypes.arrayOf(PropTypes.string).isRequired,
     weight: PropTypes.number.isRequired
   }).isRequired
 };

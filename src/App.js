@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import Loader from "./components/Loader";
 import Logo from "./assets/logo.svg";
 import Pokemon from "./components/Pokemon";
-import PokemonDetail from "./components/PokemonDetail";
 
 class App extends Component {
   state = {
@@ -43,7 +42,7 @@ class App extends Component {
     if (cachedPokemon) {
       this.setState({
         isFetching: false,
-        selectedPokemon: cachedPokemon,
+        selectedPokemon: cachedPokemon
       });
 
       return;
@@ -58,15 +57,23 @@ class App extends Component {
         return response.json();
       })
       .then(data => {
-        const { base_experience: baseExperience, name, sprites, weight } = data;
+        const { id, height, name, sprites, stats, types, weight } = data;
 
         const selectedPokemon = {
-          baseExperience,
+          height,
+          id,
           images: {
             male: sprites.front_default,
             female: sprites.front_female
           },
           name,
+          stats: stats.map(item => {
+            return {
+              value: item.base_stat,
+              name: item.stat.name
+            };
+          }),
+          types: types.map(item => item.type.name),
           weight
         };
 
@@ -88,6 +95,7 @@ class App extends Component {
                 name={item.name}
                 showDetail={this.fetchPokemonDetail}
                 url={item.url}
+                selectedPokemon={this.state.selectedPokemon}
               />
             </li>
           ))}
@@ -97,7 +105,7 @@ class App extends Component {
   };
 
   render() {
-    const { isFetching, pokemonList, selectedPokemon } = this.state;
+    const { isFetching, pokemonList } = this.state;
 
     return (
       <React.Fragment>
@@ -108,10 +116,6 @@ class App extends Component {
         {isFetching && <Loader />}
 
         {pokemonList ? this.showPokemonList(pokemonList) : null}
-
-        {selectedPokemon ? (
-          <PokemonDetail pokemonData={selectedPokemon} />
-        ) : null}
       </React.Fragment>
     );
   }
