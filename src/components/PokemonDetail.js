@@ -8,12 +8,12 @@ import IconClipBoard from "../assets/clipboard-list.svg";
 import format from "../lib/format";
 
 import PokemonStat from './PokemonStat'
+import PokemonType from './PokemonType'
 
 const PokemonDetail = ({ pokemonData }) => {
   const { height, id, images, name, stats, types, weight } = pokemonData;
 
   console.log(stats)
-  console.log(types)
 
   return (
     <div className="pokedex-detail">
@@ -35,30 +35,40 @@ const PokemonDetail = ({ pokemonData }) => {
         </div>
       </div>
 
-      <div className="pokedex-stats">
-        <div className="pokedex-icon icon">
-          <IconClipBoard />
+      <div className="pokedex-info">
+        <div className="pokedex-stats">
+          <div className="pokedex-icon icon">
+            <IconClipBoard />
+          </div>
+
+          <PokemonStat text="Height">{height}m</PokemonStat>
+
+          <PokemonStat text="Weight">{weight / 10}kg</PokemonStat>
+
+          <PokemonStat text="Gender">
+            <div className="pokedex-gender">
+              {images.male && (
+                <div className="pokedex-genderIcon icon">
+                  <IconMale />
+                </div>
+              )}
+
+              {images.female && (
+                <div className="pokedex-genderIcon icon">
+                  <IconFemale />
+                </div>
+              )}
+            </div>
+          </PokemonStat>
         </div>
 
-        <PokemonStat text="Height">{height}m</PokemonStat>
+        <h2 className="pokedex-name">Type</h2>
 
-        <PokemonStat text="Weight">{weight / 10}kg</PokemonStat>
-
-        <PokemonStat text="Gender">
-          <div className="pokedex-gender">
-            {images.male && (
-              <div className="pokedex-genderIcon icon">
-                <IconMale />
-              </div>
-            )}
-
-            {images.female && (
-              <div className="pokedex-genderIcon icon">
-                <IconFemale />
-              </div>
-            )}
-          </div>
-        </PokemonStat>
+        <div className="pokedex-typeList">
+          {
+            types.map(type => <PokemonType key={type} type={type} />)
+          }
+        </div>
       </div>
     </div>
   );

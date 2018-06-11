@@ -101,13 +101,16 @@ body {
     display: flex;
   }
 
-  &-genderIcon + &-genderIcon {
-    margin-left: 1rem;
+  &-genderIcon {
+    & + & {
+      margin-left: 1rem;
+    }
   }
 
   &-stats {
     position: relative;
     padding: var(--gutter);
+    margin-bottom: 1rem;
     font-size: .875rem;
     color: #fff;
     background-color: var(--color-red);
@@ -129,5 +132,36 @@ body {
     position: absolute;
     top: var(--gutter);
     right: var(--gutter);
+  }
+
+  &-typeList {
+    display: flex;
+  }
+
+  &-type {
+    padding: .25rem .5rem;
+    font-size: .875rem;
+    color: #fff;
+    border-radius: .5rem;
+
+    & + & {
+      margin-left: .5rem;
+    }
+
+    &--fire {
+      background-color: #fd7d24;
+    }
+    &--flying {
+      background-color: #3dc7ef;
+    }
+    &--grass {
+      background-color: #9bcc50;
+    }
+    &--poison {
+      background-color: #b97fc9;
+    }
+    &--water {
+      background-color: #4592c4;
+    }
   }
 }
