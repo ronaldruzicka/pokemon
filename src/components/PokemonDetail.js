@@ -7,6 +7,7 @@ import IconClipBoard from "../assets/clipboard-list.svg";
 
 import format from "../lib/format";
 
+import PokemonAttribute from './PokemonAttribute'
 import PokemonStat from './PokemonStat'
 import PokemonType from './PokemonType'
 
@@ -36,16 +37,16 @@ const PokemonDetail = ({ pokemonData }) => {
       </div>
 
       <div className="pokedex-info">
-        <div className="pokedex-stats">
+        <div className="pokedex-section pokedex-attributes">
           <div className="pokedex-icon icon">
             <IconClipBoard />
           </div>
 
-          <PokemonStat text="Height">{height}m</PokemonStat>
+          <PokemonAttribute text="Height">{height}m</PokemonAttribute>
 
-          <PokemonStat text="Weight">{weight / 10}kg</PokemonStat>
+          <PokemonAttribute text="Weight">{weight / 10}kg</PokemonAttribute>
 
-          <PokemonStat text="Gender">
+          <PokemonAttribute text="Gender">
             <div className="pokedex-gender">
               {images.male && (
                 <div className="pokedex-genderIcon icon">
@@ -59,15 +60,29 @@ const PokemonDetail = ({ pokemonData }) => {
                 </div>
               )}
             </div>
-          </PokemonStat>
+          </PokemonAttribute>
         </div>
 
-        <h2 className="pokedex-name">Type</h2>
+        <div className="pokedex-section">
+          <h2 className="pokedex-name">Type</h2>
+          <div className="pokedex-typeList">
+            {
+              types.map(type => <PokemonType key={type} type={type} />)
+            }
+          </div>
+        </div>
 
-        <div className="pokedex-typeList">
-          {
-            types.map(type => <PokemonType key={type} type={type} />)
-          }
+        <div className="pokedex-section">
+          <h2 className="pokedex-name">Stats</h2>
+          <div className="pokedex-stats">
+            {
+              stats.map(stat => {
+                const { name, value} = stat;
+
+                return <PokemonStat key={name} name={name} value={value} />
+              })
+            }
+          </div>
         </div>
       </div>
     </div>

@@ -1,18 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Label = ({ children, text }) => {
+const PokemonStat = ({ name, value }) => {
+  const style = {
+    height: `${value}px`
+  };
+
   return (
     <div className="pokedex-stat">
-      <div className="pokedex-label">{text}</div>
-      {children}
+      <div className="pokedex-statValue" style={style} />
+      <div className="pokedex-statLabel">{name}</div>
     </div>
   );
 };
 
-Label.propTypes = {
-  children: PropTypes.node.isRequired,
-  text: PropTypes.string.isRequired
+PokemonStat.propTypes = {
+  name: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired
 };
 
-export default Label;
+export default PokemonStat;

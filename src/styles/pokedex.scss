@@ -19,8 +19,10 @@ body {
 }
 
 body {
-  font-family: Exo, Helvetica, Arial, sans-serif;
+  font-family: $font-family;
+  font-size: $font-size-base;
   font-weight: 300;
+  line-height: $line-height;
 }
 
 .pokedex {
@@ -48,7 +50,7 @@ body {
   &-nav {
     padding: 1rem;
     background: #f9f9f9;
-    border-radius: .5rem;
+    border-radius: $border-radius;
   }
 
   &-navList {
@@ -88,6 +90,7 @@ body {
   }
 
   &-detailHeader {
+    align-self: start;
     margin-bottom: var(--gutter);
     text-align: center;
   }
@@ -107,17 +110,20 @@ body {
     }
   }
 
-  &-stats {
+  &-section {
+    margin-bottom: 1rem;
+  }
+
+  &-attributes {
     position: relative;
     padding: var(--gutter);
-    margin-bottom: 1rem;
     font-size: .875rem;
     color: #fff;
     background-color: var(--color-red);
-    border-radius: .5rem;
+    border-radius: $border-radius;
   }
 
-  &-stat {
+  &-attribute {
     &:not(:last-child) {
       margin-bottom: 1rem;
     }
@@ -142,7 +148,7 @@ body {
     padding: .25rem .5rem;
     font-size: .875rem;
     color: #fff;
-    border-radius: .5rem;
+    border-radius: $border-radius;
 
     & + & {
       margin-left: .5rem;
@@ -163,5 +169,32 @@ body {
     &--water {
       background-color: #4592c4;
     }
+  }
+
+  &-stats {
+    display: grid;
+    padding: var(--gutter);
+    color: #fff;
+    background: var(--color-blue);
+    border-radius: $border-radius;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: 150px auto;
+    grid-column-gap: .5rem;
+  }
+
+  &-stat {
+    display: grid;
+    text-align: center;
+    grid-template-rows: 1fr calc(#{$line-height} * #{$font-size-stat-label} * 2 );
+  }
+
+  &-statLabel {
+    font-size: $font-size-stat-label;
+  }
+
+  &-statValue {
+    align-self: end;
+    margin-bottom: .25rem;
+    background-color: #fff;
   }
 }
